@@ -1,0 +1,10 @@
+/* Stretchtext in-page styling. Kept minimal: the floating control carries
+   its own inline styles so it is not affected by site CSS resets. */
+
+.stretchtext-root {
+  all: initial;
+}
+
+.stretchtext-root * {
+  box-sizing: border-box;
+}

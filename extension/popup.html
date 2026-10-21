@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Stretchtext</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="head">
+      <div class="mark">ST</div>
+      <div>
+        <h1>Stretchtext</h1>
+        <p class="tag">Text that grows where you want more.</p>
+      </div>
+    </header>
+
+    <section id="signed-out" class="card">
+      <h2>Sign in with your own Pollen</h2>
+      <p class="small">
+        Stretchtext never uses a shared key. You sign in with your own Pollinations
+        account and every rewrite is paid for by you, from your own balance.
+      </p>
+      <button id="signin" class="primary">Sign in with your own Pollen</button>
+      <div id="signin-step" hidden>
+        <p class="small" id="signin-hint"></p>
+        <p class="code" id="user-code"></p>
+        <a id="verify-link" class="link" href="#" target="_blank" rel="noopener"
+          >Open the verification page</a
+        >
+        <p class="small" id="signin-status">Waiting for you to approve…</p>
+      </div>
+      <p class="error" id="signin-error" hidden></p>
+    </section>
+
+    <section id="signed-in" class="card" hidden>
+      <div class="row">
+        <div>
+          <p class="label">Signed in as</p>
+          <p class="username" id="username">—</p>
+        </div>
+        <div class="right">
+          <p class="label">Balance</p>
+          <p class="balance" id="balance">—</p>
+        </div>
+      </div>
+      <button id="refresh" class="ghost">Refresh balance</button>
+      <button id="signout" class="ghost danger">Sign out</button>
+    </section>
+
+    <section class="card">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li>Hover any paragraph on a page.</li>
+        <li>A small control appears next to it.</li>
+        <li>
+          Click <strong>Expand</strong> to grow that text in place with more
+          detail, or <strong>Shrink</strong> to condense it back.
+        </li>
+        <li>Keyboard: <kbd>Alt</kbd> + <kbd>E</kbd> expands, <kbd>Alt</kbd> + <kbd>S</kbd> shrinks.</li>
+      </ol>
+      <p class="small">
+        Nothing is rewritten until you click. The original wording is kept, so
+        <strong>Restore</strong> always brings the page back.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Default growth</h2>
+      <label class="small" for="verbosity">How much detail a rewrite adds</label>
+      <select id="verbosity">
+        <option value="light">Light (~1.6x)</option>
+        <option value="medium">Medium (~2.2x)</option>
+        <option value="heavy">Heavy (~3.2x)</option>
+      </select>
+      <p class="small" id="cost-note">
+        Cost per rewrite is charged to your own Pollen balance.
+      </p>
+    </section>
+
+    <footer class="foot">
+      <a
+        class="badge"
+        href="https://pollinations.ai/?ref=badge"
+        target="_blank"
+        rel="noopener"
+      >
+        <img
+          alt="Made with pollinations.ai"
+          src="https://raw.githubusercontent.com/pollinations/pollinations/main/packages/ui/src/brand/badge-made-with.svg"
+        />
+      </a>
+      <p class="small">
+        Made with <a href="https://pollinations.ai/?ref=badge" target="_blank" rel="noopener">pollinations.ai</a>
+        · <a href="https://github.com/Sugamdeol/stretchtext-extension" target="_blank" rel="noopener">Source</a>
+        · <a href="https://github.com/Sugamdeol/stretchtext-extension/issues" target="_blank" rel="noopener">Report an issue</a>
+      </p>
+    </footer>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

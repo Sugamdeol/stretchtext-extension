@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stretchtext — install the browser extension</title>
+    <meta
+      name="description"
+      content="Stretchtext is a Chrome extension that grows any paragraph in place with more detail and shrinks it back, paid for with your own Pollen."
+    />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hero">
+        <div class="hero-text">
+          <div class="brand">
+            <span class="mark">ST</span>
+            <span class="brandname">Stretchtext</span>
+          </div>
+          <h1>Text that grows where you want more.</h1>
+          <p class="lede">
+            In 1967 Ted Nelson described <em>stretchtext</em>: prose that opens
+            up one phrase at a time, so detail appears exactly where your
+            attention is. Writing every level by hand was too much work, so it
+            never caught on. Generated text makes it cheap.
+          </p>
+          <p class="lede">
+            Stretchtext brings that to <strong>any web page</strong>. Hover a
+            paragraph, press <strong>Expand</strong>, and the text grows
+            <strong>in place</strong> — same element, same page, no modal, no
+            new tab. <strong>Shrink</strong> condenses it back. You pay with
+            <strong>your own Pollen</strong>; there is no shared key.
+          </p>
+          <p class="cta">
+            <a class="button primary" href="extension.zip" download
+              >Download extension.zip</a
+            >
+            <a class="button" href="#install">How to install</a>
+            <a
+              class="badge"
+              href="https://pollinations.ai/?ref=badge"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                alt="Made with pollinations.ai"
+                src="https://raw.githubusercontent.com/pollinations/pollinations/main/packages/ui/src/brand/badge-made-with.svg"
+              />
+            </a>
+          </p>
+          <p class="meta">
+            Manifest V3 · plain JavaScript · no build step · no dependencies ·
+            source on
+            <a href="https://github.com/Sugamdeol/stretchtext-extension"
+              >GitHub</a
+            >
+          </p>
+        </div>
+
+        <div class="hero-shot">
+          <img
+            src="docs/screenshot.png"
+            alt="Stretchtext screenshot: a web article with the in-page Expand and Shrink control above a paragraph, and the extension popup showing the signed-in reader and their Pollen balance."
+            width="1600"
+            height="900"
+          />
+          <p class="caption">
+            The extension in use: the in-page control above a paragraph, and
+            the popup with the reader's own Pollen balance.
+          </p>
+        </div>
+      </header>
+
+      <section id="install" class="panel">
+        <h2>Install it</h2>
+        <div class="cols">
+          <div>
+            <h3>Option 1 — download the zip</h3>
+            <ol>
+              <li>
+                <a href="extension.zip" download>Download extension.zip</a> and
+                unpack it (it contains a single <code>extension/</code> folder).
+              </li>
+              <li>Open <code>chrome://extensions</code>.</li>
+              <li>Turn on <strong>Developer mode</strong>.</li>
+              <li>
+                Click <strong>Load unpacked</strong> and choose the
+                <code>extension/</code> folder.
+              </li>
+            </ol>
+          </div>
+          <div>
+            <h3>Option 2 — from source</h3>
+            <ol>
+              <li>
+                Clone
+                <a href="https://github.com/Sugamdeol/stretchtext-extension"
+                  >the repository</a
+                >.
+              </li>
+              <li>Open <code>chrome://extensions</code> → Developer mode.</li>
+              <li>
+                <strong>Load unpacked</strong> → select the repo's
+                <code>extension/</code> directory.
+              </li>
+            </ol>
+            <p class="small">
+              There is nothing to build. The <code>extension/</code> directory
+              <em>is</em> the extension.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>How it works</h2>
+        <div class="cols three">
+          <div class="step">
+            <span class="num">1</span>
+            <h3>Hover a paragraph</h3>
+            <p>
+              A small control appears right above it. Select text inside a
+              paragraph and the same control focuses that paragraph.
+            </p>
+          </div>
+          <div class="step">
+            <span class="num">2</span>
+            <h3>Click Expand</h3>
+            <p>
+              Pollinations rewrites the block with more detail — concrete
+              specifics, context, mechanism. It lands in the same element, so
+              the page layout is untouched.
+            </p>
+          </div>
+          <div class="step">
+            <span class="num">3</span>
+            <h3>Shrink it back</h3>
+            <p>
+              Condense it again, or hit <strong>Restore</strong> to return the
+              exact original wording. Keyboard:
+              <kbd>Alt</kbd>+<kbd>E</kbd> and <kbd>Alt</kbd>+<kbd>S</kbd>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Your own Pollen</h2>
+        <div class="cols two">
+          <div>
+            <p>
+              Stretchtext uses the Pollinations OAuth <strong>device flow</strong>,
+              the one the API docs recommend for extensions. The popup's
+              <strong>Sign in with your own Pollen</strong> button shows a
+              short code, opens the verification page, and waits for your
+              approval.
+            </p>
+            <ul>
+              <li>
+                Your key is stored in <code>chrome.storage.local</code> only —
+                never in a web page, never in a URL, never logged.
+              </li>
+              <li>
+                All API calls run in the extension's service worker, so your key
+                never reaches a page's JavaScript.
+              </li>
+              <li>
+                The popup shows your Pollen balance, and the in-page control
+                shows what the rewrites on the current page have cost.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="popup-mock" aria-label="Preview of the extension popup">
+              <div class="popup-head">
+                <span class="mark small">ST</span>
+                <div>
+                  <strong>Stretchtext</strong>
+                  <span class="popup-tag">Text that grows where you want more.</span>
+                </div>
+              </div>
+              <div class="popup-body">
+                <p class="popup-label">Signed in as</p>
+                <p class="popup-user">reader</p>
+                <p class="popup-label right">Balance</p>
+                <p class="popup-balance">42.500 🌾</p>
+                <div class="popup-steps">
+                  <span>1</span> Hover any paragraph.
+                  <span>2</span> Click <strong>Expand</strong> to grow it in
+                  place.
+                  <span>3</span> Click <strong>Shrink</strong> to condense it
+                  back.
+                </div>
+                <p class="popup-note">
+                  Preview of the extension popup UI. Nothing is rewritten until
+                  you click.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Permissions, and why</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Permission</th>
+              <th>Why it is needed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>storage</code></td>
+              <td>
+                Holds your Pollen key and the verbosity preference, in
+                <code>chrome.storage.local</code> only.
+              </td>
+            </tr>
+            <tr>
+              <td><code>gen.pollinations.ai</code></td>
+              <td>The text API and the balance endpoint.</td>
+            </tr>
+            <tr>
+              <td><code>enter.pollinations.ai</code></td>
+              <td>Device-flow sign-in and user info.</td>
+            </tr>
+            <tr>
+              <td>Content script on <code>http(s)://*</code></td>
+              <td>
+                It has to read the text of the page you are reading to rewrite
+                that one block in place. Nothing leaves the page until you
+                click.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <footer class="foot">
+        <a
+          class="badge"
+          href="https://pollinations.ai/?ref=badge"
+          target="_blank"
+          rel="noopener"
+        >
+          <img
+            alt="Made with pollinations.ai"
+            src="https://raw.githubusercontent.com/pollinations/pollinations/main/packages/ui/src/brand/badge-made-with.svg"
+          />
+        </a>
+        <p>
+          Made with
+          <a href="https://pollinations.ai/?ref=badge" target="_blank" rel="noopener"
+            >pollinations.ai</a
+          >
+          · Source and issues on
+          <a
+            href="https://github.com/Sugamdeol/stretchtext-extension"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+          · MIT licensed
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
